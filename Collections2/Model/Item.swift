@@ -11,5 +11,6 @@ import Foundation
 struct Item: Equatable {
     var name: String
     var value: String
-    var location: String 
+    var location: String
+    var isFavorite: Bool
 }

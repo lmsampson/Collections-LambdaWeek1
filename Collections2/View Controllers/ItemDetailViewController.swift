@@ -26,10 +26,12 @@ class ItemDetailViewController: UIViewController {
             let value = itemValueTextField.text,
             let location = itemLocationTextField.text else { return }
         
+        let isFavorite = favoriteSwitch.isOn
+        
         if let item = item {
-            itemController?.updateItem(item: item, withName: name, value: value, location: location)
+            itemController?.updateItem(item: item, withName: name, value: value, location: location, isFavorite: isFavorite)
         } else {
-            let _ = itemController?.createNewItem(withName: name, value: value, location: location)
+            let _ = itemController?.createNewItem(withName: name, value: value, location: location, isFavorite: isFavorite)
         }
     }
     
@@ -44,6 +46,7 @@ class ItemDetailViewController: UIViewController {
         itemNameTextField.text = item.name
         itemValueTextField.text = item.value
         itemLocationTextField.text = item.location
+        favoriteSwitch.isOn = item.isFavorite
     }
     
     var item: Item?
@@ -52,5 +55,6 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var itemValueTextField: UITextField!
     @IBOutlet weak var itemLocationTextField: UITextField!
+    @IBOutlet weak var favoriteSwitch: UISwitch!
     
 }

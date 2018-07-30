@@ -45,7 +45,14 @@ class CollectionTableViewController: UITableViewController {
             detailVC.item = itemController.items[indexPath.row]
         }
     }
-
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = itemController.items[indexPath.row]
+            itemController.delete(item: item)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
     let itemController = ItemController()
     
